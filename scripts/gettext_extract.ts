@@ -78,6 +78,9 @@ console.info();
     const isFile = fs.existsSync(poFile) && fs.lstatSync(poFile).isFile();
     if (isFile) {
       await execShellCommand(`msgmerge --lang=${loc} --update ${poFile} ${config.output.potPath} --backup=off`);
+      if (!config.output.obsolete) {
+        await execShellCommand(`msgattrib --no-obsolete -o ${poFile} ${poFile}`);
+      }
       console.info(`${chalk.green("Merged")}: ${chalk.blueBright(poFile)}`);
     } else {
       await execShellCommand(

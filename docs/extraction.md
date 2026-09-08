@@ -49,6 +49,7 @@ module.exports = {
     flat: false, // don't create subdirectories for locales
     linguas: true, // create a LINGUAS file
     splitJson: false, // create separate json files for each locale. If used, jsonPath must end with a directory, not a file
+    obsolete: true, // keep obsolete "#~" entries when updating an existing po file. Set to false to remove them
   },
 };
 ```
